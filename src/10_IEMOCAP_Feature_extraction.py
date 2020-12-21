@@ -41,7 +41,7 @@ def original_melfature_extraction(session,audio_dir):
         audio_features['emotions'] = pd.Series(emotions)
         if not os.path.exists('input/mel_features/Original_features'):
             os.makedirs('input/mel_features/Original_features')
-        audio_feature_subset = audio_features[audio_features["emotions"].isin(["neu", 'ang', 'hap', 'sad'])]
+        audio_feature_subset = audio_features[audio_features["emotions"].isin(["neu", 'ang', 'hap', 'sad','exc'])]
         audio_feature_subset.to_csv('input/mel_features/Original_features/audio_features_{}.csv'.format(session), index = False)
 
 
@@ -71,7 +71,7 @@ def codec_melfeature_extraction(session,audio_dir):
         audio_features['emotions'] = pd.Series(emotions)
         if not os.path.exists('input/mel_features/CodecAugmented_features'):
             os.makedirs('input/mel_features/CodecAugmented_features')
-        audio_feature_subset = audio_features[audio_features["emotions"].isin(["neu", 'ang', 'hap', 'sad'])]
+        audio_feature_subset = audio_features[audio_features["emotions"].isin(["neu", 'ang', 'hap', 'sad','exc'])]
         audio_feature_subset.to_csv('input/mel_features/CodecAugmented_features/audio_features_{}.csv'.format(session), index = False)
 
 def specAugmented_melfeature_extraction(session,audio_dir):
@@ -100,7 +100,7 @@ def specAugmented_melfeature_extraction(session,audio_dir):
                 label= row['emotion']
                 emotions.append(label)
         audio_features['emotions'] = pd.Series(emotions)
-        audio_feature_subset = audio_features[audio_features["emotions"].isin(["neu", 'ang', 'hap', 'sad'])]
+        audio_feature_subset = audio_features[audio_features["emotions"].isin(["neu", 'ang', 'hap', 'sad','exc'])]
         if not os.path.exists('input/mel_features/SpecAugmented_features'):
             os.makedirs('input/mel_features/SpecAugmented_features')
         audio_feature_subset.to_csv('input/mel_features/SpecAugmented_features/audio_features_{}.csv'.format(session), index = False)
